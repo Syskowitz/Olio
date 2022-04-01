@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="refreshPage"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
+
+    <WebView
+        android:id="@+id/webBrowser"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/editTextURL"
+        android:layout_width="301dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="textUri"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/buttonRefresh"
+        android:layout_width="58dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="4dp"
+        android:background="#16DF0F"
+        android:onClick="refreshPage"
+        app:icon="@android:drawable/ic_popup_sync"
+        app:iconTint="#16DF0F"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextURL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextURL"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/buttonBackwards"
+        android:layout_width="68dp"
+        android:layout_height="45dp"
+        android:background="#16DF0F"
+        android:onClick="goPrevSite"
+        android:textColor="#16DF0F"
+        android:textColorHighlight="#16DF0F"
+        android:textColorLink="#16DF0F"
+        app:icon="@android:drawable/ic_menu_revert"
+        app:iconTint="#16DF0F"
+        app:layout_constraintBottom_toTopOf="@+id/webBrowser"
+        app:layout_constraintEnd_toStartOf="@+id/buttonForwards"
+        app:layout_constraintTop_toBottomOf="@+id/editTextURL"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/buttonForwards"
+        android:layout_width="58dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#16DF0F"
+        android:onClick="goNextSite"
+        app:icon="@android:drawable/ic_media_play"
+        app:iconTint="#16DF0F"
+        app:layout_constraintBottom_toTopOf="@+id/webBrowser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRefresh"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/buttonShout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:onClick="shoutOut"
+        android:text="@string/shoutout"
+        app:layout_constraintBottom_toTopOf="@+id/webBrowser"
+        app:layout_constraintEnd_toStartOf="@+id/buttonBackwards"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextURL"
+        app:layout_constraintVertical_bias="0.285" />
+
+    <Button
+        android:id="@+id/buttoninitialize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="5dp"
+        android:onClick="initializeJavaScript"
+        android:text="@string/initialize"
+        app:layout_constraintBottom_toTopOf="@+id/webBrowser"
+        app:layout_constraintEnd_toStartOf="@+id/buttonShout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextURL" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,12 +3,17 @@ package com.example.viikko8;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
     Spinner productChoice;
     BottleDispenser bd;
     ArrayList<Bottle> productArray;
+    Context context = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = MainActivity.this;
         bd = BottleDispenser.getInstance();
         moneySeek = findViewById(R.id.moneySeekBar);
         moneyTxt = findViewById(R.id.moneyView);
@@ -73,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void buyProductPress(View v) {
+        printReceipt();
         Bottle selectedProduct = (Bottle) productChoice.getSelectedItem();
         for (int i = 0; i < bd.getArrayLength(); i++) {
             if (selectedProduct.toString().equals(bd.getBottle(i).toString())) {
@@ -96,6 +104,18 @@ public class MainActivity extends AppCompatActivity {
             bd.returnMoney();
         } else {
             screenTxt.setText("No money in the machine!");
+        }
+    }
+    public void printReceipt() {
+        try {
+            OutputStreamWriter ows = new OutputStreamWriter(context.openFileOutput("receipt.txt",context.MODE_PRIVATE));
+            ows.write(bd.getBottle(2).toString());
+            System.out.print(bd.getBottle(2));
+            ows.close();
+        } catch (IOException e) {
+            Log.e("IOException","Homma men vituiks :(");
+        } finally {
+            System.out.println("Written to file.");
         }
     }
 }

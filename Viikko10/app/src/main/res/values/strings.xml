@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Viikko10</string>
+    <string name="shoutout">shoutOut</string>
+    <string name="initialize">initialize</string>
+</resources>
